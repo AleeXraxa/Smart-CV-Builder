@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:smart_cv_builder/Modules/Authentication/Controller/authController.dart';
-import 'package:smart_cv_builder/Modules/Authentication/Model/register.dart';
+import 'package:smart_cv_builder/Modules/Authentication/Model/login.dart';
 
-class Login extends StatefulWidget {
-  const Login({super.key});
+import '../Controller/authController.dart';
+
+class Register extends StatefulWidget {
+  const Register({super.key});
 
   @override
-  State<Login> createState() => _LoginState();
+  State<Register> createState() => _RegisterState();
 }
 
-class _LoginState extends State<Login> {
+class _RegisterState extends State<Register> {
   final _authController = Get.find<Authcontroller>();
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,7 @@ class _LoginState extends State<Login> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text('Login'),
+            Text('Create Account'),
             SizedBox(height: 10),
             TextField(
               controller: _authController.emailController,
@@ -39,14 +40,14 @@ class _LoginState extends State<Login> {
             ),
             ElevatedButton(
                 onPressed: () {
-                  _authController.loginUser();
-                },
-                child: Text('Login')),
-            ElevatedButton(
-                onPressed: () {
-                  Get.to(Register());
+                  _authController.registerUser();
                 },
                 child: Text('Register')),
+            ElevatedButton(
+                onPressed: () {
+                  Get.to(Login());
+                },
+                child: Text('Login')),
           ],
         ),
       ),
